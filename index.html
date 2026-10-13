@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#07090e">
-<meta name="description" content="IMPULSE — Feel the speed. Own the road. Enter a thrilling 3D driving experience.">
+<meta name="description" content="Impulse — Feel the speed. Own the road. Enter a thrilling 3D racing game experience created by Aditya Pal.">
 
-<title>IMPULSE — Feel The Speed</title>
+<title>Impulse — 3D Car Game by Aditya Pal</title>
 
 <style>
 :root {
@@ -33,7 +33,7 @@ html {
 body {
   background: var(--bg);
   color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -46,7 +46,7 @@ button {
   font: inherit;
 }
 
-/* BACKGROUND */
+/* BACKGROUND & GAMING FX */
 
 .background {
   position: fixed;
@@ -54,9 +54,9 @@ button {
   z-index: -3;
   background:
     radial-gradient(ellipse at 75% 45%,
-      rgba(0, 105, 255, .16), transparent 42%),
+      rgba(0, 105, 255, .18), transparent 45%),
     radial-gradient(ellipse at 15% 80%,
-      rgba(255, 30, 70, .09), transparent 40%),
+      rgba(255, 30, 70, .1), transparent 42%),
     linear-gradient(145deg, #101521, #07090e 65%);
 }
 
@@ -64,20 +64,20 @@ button {
   position: fixed;
   inset: 0;
   z-index: -2;
-  opacity: .15;
+  opacity: .18;
   pointer-events: none;
 
   background-image:
-    linear-gradient(rgba(0,234,255,.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,234,255,.12) 1px, transparent 1px);
+    linear-gradient(rgba(0,234,255,.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,234,255,.15) 1px, transparent 1px);
 
-  background-size: 45px 45px;
+  background-size: 50px 50px;
 
   mask-image: linear-gradient(
     to bottom,
     transparent,
-    black 25%,
-    black 75%,
+    black 20%,
+    black 80%,
     transparent
   );
 }
@@ -87,7 +87,7 @@ button {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: .07;
+  opacity: .05;
 
   background-image: repeating-linear-gradient(
     0deg,
@@ -97,72 +97,77 @@ button {
   );
 }
 
-/* HEADER */
+/* HEADER / HUD */
 
 header {
   width: 100%;
-  height: 76px;
+  height: 80px;
   padding: 0 7%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 1px solid rgba(255,255,255,.07);
-  background: rgba(7,9,14,.72);
-  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(7,9,14,.8);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 
 .brand-mark {
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
 
   color: var(--cyan);
-  border: 1px solid rgba(0,234,255,.5);
-  transform: skew(-8deg);
+  border: 1px solid rgba(0,234,255,.6);
+  transform: skew(-10deg);
+  background: rgba(0,234,255,.05);
 
-  box-shadow: 0 0 18px rgba(0,234,255,.12);
+  box-shadow: 0 0 20px rgba(0,234,255,.2);
 }
 
 .brand-mark span {
-  transform: skew(8deg);
+  transform: skew(10deg);
 }
 
 .status {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
   color: #a6b4c8;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .status-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #00e69a;
   box-shadow: 0 0 12px #00e69a;
 }
 
-/* HERO */
+/* HERO SECTION */
 
 .hero {
-  min-height: calc(100svh - 76px);
-  padding: 55px 7% 65px;
+  min-height: calc(100svh - 80px);
+  padding: 40px 7% 60px;
 
   display: flex;
   flex-direction: column;
@@ -177,12 +182,12 @@ header {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
   color: var(--cyan);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
 
   animation: enter .8s both;
@@ -192,38 +197,35 @@ header {
 .eyebrow::after {
   content: "";
   display: block;
-  width: 27px;
+  width: 30px;
   height: 1px;
   background: var(--cyan);
 }
 
 h1 {
-  margin-top: 20px;
+  margin-top: 18px;
 
-  font-size: clamp(52px, 12vw, 112px);
+  font-size: clamp(54px, 12vw, 116px);
   font-weight: 1000;
   line-height: .9;
-  letter-spacing: -.065em;
+  letter-spacing: -.06em;
 
   color: #fff;
-
-  text-shadow:
-    0 0 45px rgba(0,234,255,.12);
+  text-shadow: 0 0 50px rgba(0,234,255,.15);
 
   animation: enter .8s .1s both;
 }
 
 h1 span {
   color: transparent;
-  -webkit-text-stroke: 1px var(--cyan);
-
+  -webkit-text-stroke: 1.5px var(--cyan);
   text-shadow: none;
 }
 
 .tagline {
-  margin-top: 24px;
+  margin-top: 22px;
 
-  font-size: clamp(12px, 2.8vw, 17px);
+  font-size: clamp(13px, 2.8vw, 18px);
   font-weight: 800;
   letter-spacing: clamp(2px, .7vw, 6px);
   text-transform: uppercase;
@@ -236,8 +238,8 @@ h1 span {
 }
 
 .subtitle {
-  max-width: 420px;
-  margin-top: 17px;
+  max-width: 460px;
+  margin-top: 16px;
 
   color: var(--muted);
   font-size: 14px;
@@ -250,44 +252,43 @@ h1 span {
 
 .car-stage {
   position: relative;
-  width: min(100%, 650px);
-  height: 220px;
+  width: min(100%, 680px);
+  height: 230px;
   margin: 15px auto 0;
 
   display: grid;
   place-items: center;
 
-  perspective: 600px;
+  perspective: 700px;
   animation: enter .9s .25s both;
 }
 
 .car-glow {
   position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: 36px;
-  height: 30px;
+  left: 10%;
+  right: 10%;
+  bottom: 34px;
+  height: 35px;
 
   background: var(--blue);
-  filter: blur(32px);
-  opacity: .6;
+  filter: blur(36px);
+  opacity: .7;
   border-radius: 50%;
 }
 
 .road {
   position: absolute;
-  left: -10%;
-  right: -10%;
-  bottom: 26px;
-  height: 65px;
+  left: -15%;
+  right: -15%;
+  bottom: 24px;
+  height: 70px;
 
-  border-top: 1px solid rgba(0,234,255,.35);
-
+  border-top: 1px solid rgba(0,234,255,.4);
   transform: perspective(100px) rotateX(25deg);
 
   background: linear-gradient(
     to bottom,
-    rgba(0,234,255,.07),
+    rgba(0,234,255,.09),
     transparent
   );
 }
@@ -297,31 +298,23 @@ h1 span {
   content: "";
   position: absolute;
   top: 12px;
-
   height: 2px;
   width: 25%;
-
   background: var(--cyan);
-  opacity: .6;
+  opacity: .7;
 }
 
-.road::before {
-  left: 10%;
-}
-
-.road::after {
-  right: 10%;
-}
+.road::before { left: 10%; }
+.road::after { right: 10%; }
 
 .car-svg {
-  width: min(100%, 580px);
+  width: min(100%, 600px);
   height: auto;
   overflow: visible;
   position: relative;
   z-index: 1;
 
-  filter: drop-shadow(0 15px 22px rgba(0,0,0,.7));
-
+  filter: drop-shadow(0 18px 25px rgba(0,0,0,.8));
   animation: carFloat 4s ease-in-out infinite;
 }
 
@@ -332,46 +325,41 @@ h1 span {
 /* PLAY BUTTON */
 
 .play-wrap {
-  margin-top: 5px;
+  margin-top: 10px;
   animation: enter .8s .4s both;
 }
 
 .play-button {
-  min-width: 225px;
-  min-height: 60px;
-  padding: 0 28px;
+  min-width: 240px;
+  min-height: 62px;
+  padding: 0 32px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
 
   color: #031015;
   background: var(--cyan);
 
-  border: 1px solid rgba(255,255,255,.5);
-  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius: 6px;
 
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
 
   box-shadow:
-    0 0 20px rgba(0,234,255,.28),
-    inset 0 0 15px rgba(255,255,255,.12);
+    0 0 25px rgba(0,234,255,.35),
+    inset 0 0 15px rgba(255,255,255,.2);
 
-  transition:
-    transform .2s,
-    box-shadow .2s,
-    background .2s;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
 .play-button:hover {
   background: #fff;
   transform: translateY(-3px);
-
-  box-shadow:
-    0 0 35px rgba(0,234,255,.5);
+  box-shadow: 0 0 40px rgba(0,234,255,.6);
 }
 
 .play-button:active {
@@ -379,12 +367,11 @@ h1 span {
 }
 
 .play-icon {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .play-hint {
-  margin-top: 14px;
-
+  margin-top: 12px;
   color: #6c788c;
   font-size: 10px;
   letter-spacing: 2px;
@@ -394,20 +381,22 @@ h1 span {
 /* FEATURE STRIP */
 
 .features {
-  width: min(100%, 700px);
-  margin-top: 55px;
+  width: min(100%, 720px);
+  margin-top: 50px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  border-top: 1px solid rgba(255,255,255,.1);
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  background: rgba(16, 21, 33, 0.4);
+  backdrop-filter: blur(10px);
 
   animation: enter .8s .5s both;
 }
 
 .feature {
-  padding: 19px 8px;
+  padding: 20px 10px;
   text-align: center;
 }
 
@@ -417,24 +406,22 @@ h1 span {
 
 .feature-icon {
   display: block;
-  margin-bottom: 9px;
-
+  margin-bottom: 8px;
   color: var(--cyan);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .feature-title {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
 .feature-desc {
-  margin-top: 6px;
-
+  margin-top: 5px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 /* FOOTER */
@@ -442,17 +429,14 @@ h1 span {
 footer {
   min-height: 60px;
   padding: 20px 7%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #687386;
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
   text-align: center;
-
-  border-top: 1px solid rgba(255,255,255,.05);
+  border-top: 1px solid rgba(255,255,255,.06);
 }
 
 /* ANIMATIONS */
@@ -469,12 +453,8 @@ footer {
 }
 
 @keyframes carFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes lightPulse {
@@ -482,74 +462,45 @@ footer {
   to { opacity: 1; }
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 
 @media (max-width: 480px) {
   header {
-    height: 64px;
+    height: 70px;
     padding: 0 6%;
   }
 
   .brand {
-    font-size: 19px;
+    font-size: 20px;
     letter-spacing: 2px;
   }
 
   .brand-mark {
-    width: 31px;
-    height: 31px;
-  }
-
-  .status {
-    font-size: 8px;
-    letter-spacing: 1px;
+    width: 32px;
+    height: 32px;
   }
 
   .hero {
-    min-height: calc(100svh - 64px);
-    padding: 45px 6% 35px;
+    min-height: calc(100svh - 70px);
+    padding: 35px 6% 30px;
   }
 
   .car-stage {
-    height: 175px;
-    margin-top: 10px;
-  }
-
-  .car-glow {
-    bottom: 28px;
-  }
-
-  .road {
-    bottom: 19px;
+    height: 180px;
   }
 
   .play-button {
     min-height: 56px;
-    min-width: 215px;
+    min-width: 220px;
   }
 
   .features {
-    margin-top: 38px;
-  }
-
-  .feature {
-    padding: 16px 4px;
-  }
-
-  .feature-title {
-    font-size: 9px;
-    letter-spacing: .5px;
-  }
-
-  .feature-desc {
-    font-size: 9px;
+    margin-top: 35px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
@@ -581,7 +532,7 @@ footer {
   <section class="hero">
 
     <div class="eyebrow">
-      THE DRIVING EXPERIENCE
+      THE 3D RACING EXPERIENCE
     </div>
 
     <h1>
@@ -594,16 +545,14 @@ footer {
     </p>
 
     <p class="subtitle">
-      Every road is a new challenge.<br>
-      Every drive is your moment.
+      Every track is a new challenge.<br>
+      Designed and developed by Aditya Pal.
     </p>
 
     <div class="car-stage" aria-label="Stylized sports car illustration">
-
       <div class="car-glow"></div>
       <div class="road"></div>
 
-      <!-- Original CSS-independent inline SVG car illustration -->
       <svg
         class="car-svg"
         viewBox="0 0 600 240"
@@ -637,12 +586,10 @@ footer {
           </linearGradient>
         </defs>
 
-        <!-- Ground glow -->
         <ellipse
           cx="300" cy="183" rx="210" ry="17"
           fill="url(#underlight)" opacity=".7"/>
 
-        <!-- Rear silhouette -->
         <path
           d="M72 153 L98 132 L151 119
              L204 82 Q221 69 252 67
@@ -653,7 +600,6 @@ footer {
              L108 185 L72 174 Z"
           fill="#05080e"/>
 
-        <!-- Main body -->
         <path
           d="M60 153
              L91 135
@@ -673,7 +619,6 @@ footer {
           stroke="#637b94"
           stroke-width="1.5"/>
 
-        <!-- Roof glass -->
         <path
           d="M174 116 L216 83
              Q230 74 254 74
@@ -685,34 +630,29 @@ footer {
           stroke-opacity=".6"
           stroke-width="1.5"/>
 
-        <!-- Windshield divider -->
         <path
           d="M292 76 L292 118"
           stroke="#647d96"
           stroke-width="2"/>
 
-        <!-- Side body panel -->
         <path
           d="M155 123 L397 123
              L452 144 L169 144 Z"
           fill="#172538"
           opacity=".9"/>
 
-        <!-- Cyan side stripe -->
         <path
           d="M145 148 L453 148"
           stroke="#00eaff"
           stroke-width="2"
           opacity=".9"/>
 
-        <!-- Side intake -->
         <path
           d="M352 155 L408 154 L394 165 L349 165 Z"
           fill="#03070c"
           stroke="#45647c"
           stroke-width="1"/>
 
-        <!-- Front splitter -->
         <path
           d="M431 169 L544 163 L535 177 L453 183 Z"
           fill="#05070b"
@@ -720,7 +660,6 @@ footer {
           stroke-opacity=".7"
           stroke-width="1.5"/>
 
-        <!-- Headlight -->
         <path
           class="headlight"
           d="M450 137 L499 147 L520 159
@@ -733,12 +672,10 @@ footer {
           stroke-width="2"
           opacity=".9"/>
 
-        <!-- Rear light -->
         <path
           d="M79 146 L119 137 L113 149 L77 158 Z"
           fill="#ff354d"/>
 
-        <!-- Rear wheel -->
         <g>
           <circle cx="169" cy="176" r="34" fill="#030508"/>
           <circle cx="169" cy="176" r="25" fill="#152131"
@@ -751,7 +688,6 @@ footer {
                 stroke="#647b91" stroke-width="3"/>
         </g>
 
-        <!-- Front wheel -->
         <g>
           <circle cx="434" cy="176" r="34" fill="#030508"/>
           <circle cx="434" cy="176" r="25" fill="#152131"
@@ -764,7 +700,6 @@ footer {
                 stroke="#647b91" stroke-width="3"/>
         </g>
 
-        <!-- Lower aerodynamic trim -->
         <path
           d="M111 184 L482 184"
           stroke="#00eaff"
@@ -786,7 +721,6 @@ footer {
     </div>
 
     <div class="features">
-
       <div class="feature">
         <span class="feature-icon">◈</span>
         <div class="feature-title">3D DRIVE</div>
@@ -804,14 +738,13 @@ footer {
         <div class="feature-title">UPGRADES</div>
         <p class="feature-desc">Build your ride</p>
       </div>
-
     </div>
 
   </section>
 </main>
 
 <footer>
-  IMPULSE &nbsp;·&nbsp; AN INDEPENDENT GAME PROJECT
+  IMPULSE &nbsp;·&nbsp; 3D CAR GAME BY ADITYA PAL
 </footer>
 
 </body>
