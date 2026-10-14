@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="google-site-verification" content="ovFs389ykjg_NKQ4RsbIbRWO7rnTbwXEfHnJFjUlCmA" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#2a2536">
+<meta name="description" content="Play IMPULSE, a 3D car racing and driving game by Aditya Pal that runs in your browser. Race through Adventure levels, use nitro, earn coins, unlock cars and upgrade them in the garage.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://adityapalvertex.github.io/IMPULSE/">
+
+<title>IMPULSE - 3D Car Racing Game by Aditya Pal | Play Online</title>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IMPULSE">
+<meta property="og:title" content="IMPULSE - 3D Car Racing Game | Play Online">
+<meta property="og:description" content="Play IMPULSE, a 3D car racing and driving game by Aditya Pal that runs in your browser. Race through Adventure levels, use nitro, earn coins, unlock cars and upgrade them in the garage.">
+<meta property="og:url" content="https://adityapalvertex.github.io/IMPULSE/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IMPULSE - 3D Car Racing Game | Play Online">
+<meta name="twitter:description" content="Play IMPULSE, a 3D car racing and driving game by Aditya Pal that runs in your browser. Race through Adventure levels, use nitro, earn coins, unlock cars and upgrade them in the garage.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://adityapalvertex.github.io/IMPULSE/#website",
+      "name": "IMPULSE",
+      "url": "https://adityapalvertex.github.io/IMPULSE/",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "VideoGame",
+      "@id": "https://adityapalvertex.github.io/IMPULSE/#game",
+      "name": "IMPULSE",
+      "url": "https://adityapalvertex.github.io/IMPULSE/",
+      "description": "Play IMPULSE, a 3D car racing and driving game by Aditya Pal that runs in your browser. Race through Adventure levels, use nitro, earn coins, unlock cars and upgrade them in the garage.",
+      "genre": ["Racing", "Driving"],
+      "gamePlatform": "Web browser",
+      "applicationCategory": "Game",
+      "author": { "@type": "Person", "name": "Aditya Pal" },
+      "isPartOf": { "@id": "https://adityapalvertex.github.io/IMPULSE/#website" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #1f1b2b;
+  --panel: #3a3548;
+  --panel-dark: #2a2536;
+  --orange: #ff9a3c;
+  --orange-deep: #f27d12;
+  --white: #fff8ee;
+  --muted: #b6adc4;
+  --display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--mono);
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* BACKGROUND */
+.background {
+  position: fixed; inset: 0; z-index: -3;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(255,154,60,.22), transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(255,248,238,.07), transparent 45%),
+    linear-gradient(160deg, #3a2f4d 0%, #2a2536 45%, #1f1b2b 100%);
+}
+
+.grid {
+  position: fixed; inset: 0; z-index: -2; opacity: .12; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,154,60,.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,154,60,.35) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+}
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  height: 76px; padding: 0 7%;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(42,37,54,.88);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  border-bottom: 2px solid var(--orange);
+}
+
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--display);
+  font-size: 30px; font-weight: 800; letter-spacing: 3px;
+}
+
+.brand-mark {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  background: var(--orange); color: #2a2536;
+  clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%);
+  font-size: 24px; font-weight: 800;
+}
+
+.status {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px;
+  background: var(--panel);
+  border-left: 3px solid var(--orange);
+  color: var(--white);
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+}
+
+.status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #5fe3a1; box-shadow: 0 0 10px #5fe3a1;
+}
+
+/* HERO */
+.hero {
+  min-height: calc(100svh - 76px);
+  padding: 40px 7% 60px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  color: var(--orange);
+  font-size: 11px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase;
+  animation: enter .8s both;
+}
+.eyebrow::before, .eyebrow::after {
+  content: ""; width: 30px; height: 2px; background: var(--orange);
+}
+
+h1 {
+  margin-top: 14px;
+  font-family: var(--display);
+  font-size: clamp(72px, 16vw, 150px);
+  font-weight: 800; line-height: .88; letter-spacing: -.01em;
+  color: var(--white);
+  text-shadow: 0 6px 0 rgba(0,0,0,.25);
+  animation: enter .8s .1s both;
+}
+h1 span { color: var(--orange); }
+
+.tagline {
+  margin-top: 20px;
+  font-family: var(--display);
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 700; letter-spacing: clamp(2px, .8vw, 6px); text-transform: uppercase;
+  animation: enter .8s .2s both;
+}
+.tagline span { color: var(--orange); }
+
+.subtitle {
+  max-width: 460px; margin-top: 14px;
+  color: var(--muted); font-size: 13px; line-height: 1.9;
+  animation: enter .8s .3s both;
+}
+
+/* CAR STAGE */
+.car-stage {
+  position: relative;
+  width: min(100%, 640px); height: 230px;
+  margin: 18px auto 0;
+  display: grid; place-items: center;
+  animation: enter .9s .25s both;
+}
+
+.car-glow {
+  position: absolute; left: 12%; right: 12%; bottom: 30px; height: 34px;
+  background: var(--orange); filter: blur(38px); opacity: .55; border-radius: 50%;
+}
+
+.road {
+  position: absolute; left: -15%; right: -15%; bottom: 20px; height: 66px;
+  border-top: 2px solid rgba(255,248,238,.5);
+  transform: perspective(100px) rotateX(25deg);
+  background: linear-gradient(to bottom, rgba(255,248,238,.12), transparent);
+}
+.road::before, .road::after {
+  content: ""; position: absolute; top: 14px; height: 3px; width: 22%;
+  background: var(--white); opacity: .8;
+}
+.road::before { left: 12%; }
+.road::after { right: 12%; }
+
+.car-svg {
+  position: relative; z-index: 1;
+  width: min(100%, 560px); height: auto; overflow: visible;
+  filter: drop-shadow(0 16px 20px rgba(0,0,0,.55));
+  animation: carFloat 4s ease-in-out infinite;
+}
+.headlight { animation: lightPulse 2s ease-in-out infinite alternate; }
+
+/* PLAY BUTTON */
+.play-wrap { margin-top: 14px; animation: enter .8s .4s both; }
+
+.play-button {
+  min-width: 260px; min-height: 66px; padding: 0 40px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+  background: var(--orange); color: #2a2536;
+  font-family: var(--display);
+  font-size: 30px; font-weight: 800; letter-spacing: 3px;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
+  box-shadow: 0 0 0 transparent;
+  transition: transform .2s ease, background .2s ease, filter .2s ease;
+}
+.play-button:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 8px 18px rgba(255,154,60,.6));
+}
+.play-button:active { transform: scale(.97); }
+.play-icon { font-size: 20px; }
+
+.play-hint {
+  margin-top: 14px;
+  color: var(--muted); font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* FEATURES */
+.features {
+  width: min(100%, 720px); margin-top: 48px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  animation: enter .8s .5s both;
+}
+
+.feature {
+  padding: 20px 10px;
+  background: var(--panel);
+  border-left: 3px solid var(--orange);
+  text-align: center;
+  transition: transform .2s ease, background .2s ease;
+}
+.feature:hover { transform: translateY(-4px); background: #453f57; }
+
+.feature-icon { display: block; margin-bottom: 8px; color: var(--orange); font-size: 24px; }
+
+.feature-title {
+  font-family: var(--display);
+  font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+}
+.feature-desc { margin-top: 4px; color: var(--muted); font-size: 11px; }
+
+/* ABOUT */
+.about { max-width: 760px; margin: 0 auto; padding: 48px 7% 64px; }
+.about h2 {
+  font-family: var(--display);
+  font-size: clamp(32px, 6vw, 44px); font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.about h2 span { color: var(--orange); }
+.about p { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+.about ul { margin-top: 18px; list-style: none; display: grid; gap: 10px; }
+.about li {
+  padding: 14px 16px; background: var(--panel);
+  border-left: 3px solid var(--orange);
+  color: var(--muted); font-size: 12px; line-height: 1.7;
+}
+.about li strong {
+  display: block; color: var(--orange);
+  font-family: var(--display); font-size: 18px; letter-spacing: 2px; text-transform: uppercase;
+}
+.about a { color: var(--orange); text-decoration: underline; }
+
+/* FOOTER */
+footer {
+  padding: 22px 7%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--panel-dark);
+  border-top: 2px solid var(--orange);
+  color: var(--muted);
+  font-size: 11px; letter-spacing: 1.5px; text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes carFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes lightPulse {
+  from { opacity: .6; }
+  to   { opacity: 1; }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  header { height: 66px; padding: 0 5%; }
+  .brand { font-size: 24px; }
+  .brand-mark { width: 32px; height: 32px; font-size: 20px; }
+  .status { font-size: 9px; padding: 6px 10px; }
+  .hero { min-height: calc(100svh - 66px); padding: 30px 6% 30px; }
+  .car-stage { height: 180px; }
+  .play-button { min-width: 230px; min-height: 60px; font-size: 26px; }
+  .features { grid-template-columns: 1fr; margin-top: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="grid"></div>
+
+<header>
+  <a href="./" class="brand" aria-label="IMPULSE home">
+    <span class="brand-mark">I</span>
+    IMPULSE
+  </a>
+
+  <div class="status">
+    <span class="status-dot"></span>
+    READY TO DRIVE
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+
+    <div class="eyebrow">THE 3D RACING EXPERIENCE</div>
+
+    <h1>IMPU<span>LSE</span></h1>
+
+    <p class="tagline">
+      FEEL THE SPEED.<br>
+      <span>OWN THE ROAD.</span>
+    </p>
+
+    <p class="subtitle">
+      Every track is a new challenge.<br>
+      Designed and developed by Aditya Pal.
+    </p>
+
+    <div class="car-stage" aria-label="Stylized blocky sports car illustration">
+      <div class="car-glow"></div>
+      <div class="road"></div>
+
+      <svg class="car-svg" viewBox="0 0 600 240" role="img"
+           aria-label="Low-poly orange and white car"
+           xmlns="http://www.w3.org/2000/svg">
+
+        <ellipse cx="300" cy="212" rx="235" ry="14" fill="#000" opacity=".35"/>
+
+        <!-- lower body -->
+        <polygon points="76,176 76,140 150,130 205,100 395,100 450,132 522,140 534,176"
+                 fill="#fff8ee" stroke="#d9cdb8" stroke-width="2"/>
+        <!-- roof -->
+        <polygon points="205,100 395,100 388,108 212,108" fill="#ffffff"/>
+        <!-- windows -->
+        <polygon points="214,110 298,110 298,132 186,132" fill="#2a2536"/>
+        <polygon points="308,110 386,110 424,132 308,132" fill="#2a2536"/>
+        <!-- orange stripe -->
+        <polygon points="76,148 530,148 532,160 76,160" fill="#ff9a3c"/>
+        <!-- bumper -->
+        <polygon points="76,166 534,166 534,178 76,178" fill="#f27d12"/>
+        <!-- tail light -->
+        <rect x="76" y="136" width="14" height="12" fill="#ff354d"/>
+        <!-- headlight -->
+        <rect class="headlight" x="508" y="138" width="22" height="10" fill="#fff6b0"/>
+        <polygon class="headlight" points="530,140 580,152 530,150" fill="#fff6b0" opacity=".5"/>
+        <!-- door line -->
+        <path d="M298 110 V160" stroke="#d9cdb8" stroke-width="2"/>
+
+        <!-- wheels -->
+        <g>
+          <circle cx="175" cy="178" r="32" fill="#14111c"/>
+          <circle cx="175" cy="178" r="20" fill="#fff8ee"/>
+          <circle cx="175" cy="178" r="8" fill="#ff9a3c"/>
+        </g>
+        <g>
+          <circle cx="435" cy="178" r="32" fill="#14111c"/>
+          <circle cx="435" cy="178" r="20" fill="#fff8ee"/>
+          <circle cx="435" cy="178" r="8" fill="#ff9a3c"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="play-wrap">
+      <a class="play-button" href="./impulse-30.html">
+        <span class="play-icon">▶</span>
+        PLAY NOW
+      </a>
+      <p class="play-hint">Tap to enter the driving experience</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">◈</span>
+        <div class="feature-title">3D Drive</div>
+        <p class="feature-desc">Take the wheel</p>
+      </div>
+
+      <div class="feature">
+        <span class="feature-icon">ϟ</span>
+        <div class="feature-title">Nitro</div>
+        <p class="feature-desc">Push your limits</p>
+      </div>
+
+      <div class="feature">
+        <span class="feature-icon">⌘</span>
+        <div class="feature-title">Upgrades</div>
+        <p class="feature-desc">Build your ride</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="about" aria-labelledby="about-title">
+    <h2 id="about-title">About <span>IMPULSE</span></h2>
+    <p>
+      IMPULSE is a 3D car racing and driving game designed and developed by Aditya Pal.
+      It runs in your web browser, with on-screen controls built for touch screens.
+      Press <a href="./impulse-30.html">Play Now</a> to start driving.
+    </p>
+    <ul>
+      <li><strong>Adventure levels</strong>Progress through levels and missions, racing against other cars and aiming for a better finishing position.</li>
+      <li><strong>Nitro and speed</strong>Use nitro to boost your car while tracking your distance and speed during each run.</li>
+      <li><strong>Garage and upgrades</strong>Earn coins, unlock cars and upgrade them with parts in the garage.</li>
+      <li><strong>Themes and rewards</strong>Switch visual themes and collect daily rewards.</li>
+      <li><strong>Custom controls</strong>Move and resize the on-screen controls and adjust steering, camera and volume settings. Your progress and settings are saved.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  IMPULSE &nbsp;·&nbsp; 3D CAR GAME BY ADITYA PAL
+</footer>
+
+</body>
+</html>
